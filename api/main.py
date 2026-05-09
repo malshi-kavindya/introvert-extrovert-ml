@@ -3,9 +3,19 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+app = FastAPI()
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 MODEL_PATH = os.path.join(
     BASE_DIR,
     "saved_models",
