@@ -2,7 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "saved_models",
+    "personality_pipeline.pkl"
+)
+
+model = joblib.load(MODEL_PATH)
 app = FastAPI(
     title='Personality Prediction API',
     description='Predict Introvert or Extrovert',
