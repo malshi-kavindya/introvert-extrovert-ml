@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app = FastAPI()
 
-
+#allow cors for all origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
